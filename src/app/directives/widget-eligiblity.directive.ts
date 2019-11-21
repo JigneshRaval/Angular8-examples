@@ -1,100 +1,54 @@
-// ./app/shared/hidden.directive.ts
-import { Directive, ElementRef, Renderer, Input } from "@angular/core";
+import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { IDBService } from '../services/indexedDb.service';
 
-// Directive decorator
 @Directive({
-  selector: "[widgetEligiblity]"
+    selector: '[widgetEligiblity]',
 })
-// Directive class
 export class WidgetEligibilityDirective {
-  eligibility: boolean = false;
-  pageName: string = "";
-  @Input() params: string;
-  pageData: any = {};
 
-  constructor(private el: ElementRef, private renderer: Renderer) {
-    // Use renderer to render the element with styles
-    // renderer.setElementStyle(el.nativeElement, "display", "none");
-  }
+    eligibility: boolean = false;
+    pageName: string;
+    @Input() params: string;
+    pageData: any = {};
+    selName: string;
 
-  ngOnInit() {
-    console.log("this.params === ", this.params);
-
-    this.pageName = this.getPageName(window.location.href);
-    this.checkEligibility(this.pageName, this.params);
-  }
-
-  checkEligibility(pageNam, selector) {
-    this.pageData = [
-      {
-        asset: {
-          login: {
-            "al-app-iva": {
-              assetType: "text",
-              assetValue: true,
-              assetKey: "arvind"
-            }
-          }
+    constructor(
+        private idbService: IDBService,
+        private templateRef: TemplateRef<any>,
+        private viewContainer: ViewContainerRef
+    ) {
+    }
+    @Input()
+    set widgetEligiblity(val: any) {
+        this.pageName = 'ag_' + 'login' + '_params';
+        let value = this.checkEligibility(this.pageName, val);
+        if (value) {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+        } else {
+            this.viewContainer.clear();
         }
-      }
-    ];
-
-    if (this.pageData) {
-      console.log("hjds" + this.pageData[0].asset[this.pageName]);
-      console.log(
-        "hjds1" + this.pageData[0].asset["login"][selector].assetValue
-      );
-      if (this.pageData[0].asset["login"][selector].assetValue) {
-        return true;
-      } else {
-        // this.el.nativeElement.style.display = "none";
-        this.renderer.setElementStyle(this.el.nativeElement, "display", "none");
-        return false;
-      }
     }
 
-    /* this.idbService.getRecordFromObjStore('PageEligibityData', pageNam).subscribe(
-            (pageData) => {
-                try {
-                    if (this.pageData) {
-                        if (this.pageData[0].asset[this.pageName][selector].assetValue) {
-                            return true;
-                        }else {
-                            return false;
-                        }
+    checkEligibility(pageNam, selector) {
+        this.idbService.getRecordFromObjStore('PageEligibilityData', pageNam).subscribe((pageData: any) => {
+            try {
+                if (pageData) {
+                    if (pageData[0]['asset'][pageNam][selector].assetValue) {
+                        this.eligibility = pageData[0]['asset'][pageNam][selector].assetValue;
+                    } else {
+                        this.eligibility = pageData[0]['asset'][pageNam][selector].assetValue;
                     }
-                } catch (error) {
-                    console.error('Error in calling service.', error);
                 }
-            },
+            } catch (error) {
+                console.error('Error in calling service.', error);
+                return false;
+            }
+        },
             (error) => {
                 console.error('Error in calling service.', error);
-            }); */
-  }
+                return false;
+            });
 
-  public getPageName(pageUrl) {
-    let urlStr, pageName;
-    if (pageUrl && pageUrl.indexOf("#/web") > 0) {
-      urlStr = pageUrl.split("#/web/")[1];
-      if (urlStr.indexOf("?")) {
-        pageName = urlStr.split("?")[0];
-        pageName = pageName.substring(
-          pageName.indexOf("/") + 1,
-          pageName.length
-        );
-      }
-    } else if (pageUrl && pageUrl.indexOf("/web") > 0) {
-      urlStr = pageUrl.split("/web/")[1];
-      if (urlStr) {
-        if (urlStr.indexOf("?")) {
-          pageName = urlStr.split("?")[0];
-          pageName = pageName.substring(
-            pageName.indexOf("/") + 1,
-            pageName.length
-          );
-        }
-      }
+        return this.eligibility;
     }
-    return pageName;
-  }
 }

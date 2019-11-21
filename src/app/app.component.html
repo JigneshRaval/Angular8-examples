@@ -4,7 +4,7 @@
 
 <button (click)="setTitle('New Title 1')">Set Title</button>
 
-<al-app-iva name="{{ name }}" widgetEligiblity params="al-app-iva"></al-app-iva>
+<al-app-iva name="{{ name }}" *widgetEligiblity="'al-app-iva'"></al-app-iva>
 
 <h1>1. Sample structural directive implementation (passing Object as Data)</h1>
 <pre><code ngNonBindable>sampleObject = &#123;
