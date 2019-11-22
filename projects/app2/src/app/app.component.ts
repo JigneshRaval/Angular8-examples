@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
 
+import { UserService } from './shared';
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app2';
+    constructor(
+        private userService: UserService
+    ) { }
+
+    ngOnInit() {
+        this.userService.populate();
+    }
 }
