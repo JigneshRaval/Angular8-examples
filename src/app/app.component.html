@@ -1,5 +1,5 @@
 <p>
-	Start editing to see some magic happen :)
+    Start editing to see some magic happen :)
 </p>
 
 <button (click)="setTitle('New Title 1')">Set Title</button>
@@ -13,21 +13,21 @@
 }</code></pre>
 
 <hello2 *paramsDir="let username of sampleObject">
-	{{username.name}}
+    {{username.name}}
 </hello2>
 
 <h1>2. Sample structural directive implementation ( with Loops )</h1>
 
 
 <hello2 *appNgLoop="let nr of numbers; index as i">
-	{{ nr }} - Foo
-	Index: {{ i }}
+    {{ nr }} - Foo
+    Index: {{ i }}
 </hello2>
 
 <h1>3. Sample structural directive implementation ( with Loops )</h1>
 <!-- REF : https://angular-2-training-book.rangle.io/advanced-angular/directives/creating_a_structural_directive -->
 <div *ngFor="let item of [1,2,3,4,5,6]">
-	<card *appDelay="1000 * item">
-		{{item}}
-	</card>
+    <card *appDelay="1000 * item">
+        {{item}}
+    </card>
 </div>

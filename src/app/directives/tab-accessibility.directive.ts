@@ -89,6 +89,8 @@ export class AlTabAccessibilityDirective implements AfterViewInit {
                     this.activateNextTab(event);
                 }
                 break;
+            default:
+                console.log('Default');
         }
     }
 

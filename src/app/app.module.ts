@@ -20,17 +20,17 @@ import { IDBService } from './services/indexedDb.service';
 
 
 @NgModule({
-  imports: [BrowserModule, FormsModule],
-  declarations: [
-    AppComponent,
-    HelloComponent,
-    Hello2Component,
-    CardComponent,
-    CORE_DIRECTIVES
-  ],
-  providers: [
-    IDBService
-  ],
-  bootstrap: [AppComponent]
+    imports: [BrowserModule, FormsModule],
+    declarations: [
+        AppComponent,
+        HelloComponent,
+        Hello2Component,
+        CardComponent,
+        CORE_DIRECTIVES
+    ],
+    providers: [
+        IDBService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
