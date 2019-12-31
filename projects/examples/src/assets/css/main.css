@@ -1,0 +1,120 @@
+@font-face{
+    font-family: "faktslabpro-normal",Arial,Helvetica,sans-serif;
+    src: url('../fonts/faktslabpro-normal.woff2') format('woff2');
+    font-weight:normal;font-style:normal
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Bold-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Bold-webfont.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Light-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Light-webfont.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/OpenSans-Semibold-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Semibold-webfont.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+.font-titillium-web {
+    font-family: 'Titillium Web'
+}
+.font-source-serif-pro {
+    font-family: 'Source Serif Pro'
+}
+
+/* */
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'Open Sans';
+}
+img { display: block; margin: 0 auto; max-width: 100%; }
+pre {
+	border: 1px dashed #333;
+	padding: 1em 2em;
+	font-family: Consolas,monospace;
+	background-color: #EEE;
+	overflow-x: scroll;
+	font-size: 14px;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+pre {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 1em auto;
+    border: 1px dashed #333;
+    width: 100%;
+    padding: 1em 1.5em;
+    font-family: Inconsolata, Consolas, monospace, sans-serif;
+    font-size: 1em;
+	line-height: 1.5;
+    overflow: auto;
+    background: #F7FAFB;
+    border-radius: 3px;
+	position:relative;
+}
+code {
+	background-color: #EEE;
+    font-family: Consolas,monospace;
+    border: solid 1px #CCC;
+    padding: 0 6px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+.hljs {
+    background-color: transparent;
+}
+pre code { background-color: transparent; padding: 0; display: block; border: 0px solid; }
+pre:after {
+	content: "<CODE>";
+	position: absolute;
+	top:0;
+	right: 0;
+	padding: 5px 15px;
+	background: #999;
+	color: #FFF;
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.uk-container.uk-container-expand {
+    padding: 0;
+}
+

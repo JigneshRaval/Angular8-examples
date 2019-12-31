@@ -1,0 +1,467 @@
+<named-router-component></named-router-component>
+<h1 class="uk-article-title">
+    <a class="uk-link-reset" href="">Heading</a>
+</h1>
+
+<!-- START : Angular 4+ Tip-->
+<article class="uk-article">
+
+    <h2 class="uk-text-lead">Using
+        <code>trackBy</code>
+    </h2>
+
+    <pre><code ngNonBindable>
+&lt;ul>
+    &lt;li *ngFor="let song of songs; trackBy: trackSongByFn">{{song.name}}&lt;/li>
+&lt;/ul>
+
+trackSongByFn(index, song) &#123;
+    return index; // or song.id
+}
+</code></pre>
+</article>
+<!-- END : Angular 4+ Tip -->
+
+<!-- START : Angular 4+ Tip -->
+<article class="uk-article">
+
+    <h2 class="uk-text-lead">How to use jQuery Plugin with Angular 4?</h2>
+
+    <p>Yes you can use jquery with Angular 4</p>
+
+    <p>Steps: </p>
+
+    <p>1) In
+        <code>index.html</code> put below line in tag.</p>
+
+    <p>
+        <code>&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"&gt;&lt;/script&gt;</code> </p>
+
+    <p>2) In component ts file below you have to declare var like this</p>
+
+    <pre><code ngNonBindable>
+import &#123; Component &#125; from '@angular/core';
+declare var jquery:any;
+declare var $ :any;
+
+@Component(&#123;
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
+})
+export class AppComponent &#123;
+    title = 'abgular 4 with jquery';
+    toggleTitle() &#123;
+        $('.title').slideToggle(); //
+    }
+}
+</code></pre>
+
+    <p>And use this code for corresponding html file like this:</p>
+
+    <pre><code ngNonBindable>
+&lt;h1 class="title" style="display:none"&gt;
+    {{title}}
+&lt;/h1&gt;
+&lt;button (click)="toggleTitle()"&gt; clickhere&lt;/button&gt;
+</code></pre>
+
+    <pre>
+<code>// Example 2
+npm install jquery — save
+
+// Second go to the ./angular-cli.json file
+"scripts": [
+    "../node_modules/jquery/dist/jquery.min.js",
+    "../node_modules/bootstrap/dist/js/bootstrap.js"
+]
+
+// import it as follows in app.component.ts file
+import * as $ from ‘jquery’;
+</code>
+</pre>
+
+    <p>This will work for you. Thanks</p>
+</article>
+<!-- END : Angular 4+ Tip -->
+
+<!-- START : Angular 4+ Tip -->
+<article class="uk-article">
+
+    <h2 class="uk-text-lead">Uses of Hidden, ngNonBindable and innerHTML directive</h2>
+
+    <p>
+        <strong>Hidden Directive:</strong>&nbsp; Conditionally add/remove an element form the element. Its same like *ngIf but main
+        <strong>difference between "Hidden"&nbsp; its just hide element not removed from the DOM but in *ngIf it removes form the
+            DOM element.</strong>
+        <br> Syntax:
+        <strong> [hidden]="conditions"</strong>
+    </p>
+    <pre><code>&lt;h2 [hidden]="islogin"&gt;Angular2 Project&lt;/h2&gt;
+&lt;h2&nbsp;[hidden]="!islogin"&gt;Hide&nbsp;Menu&lt;/h2&gt;</code></pre>
+
+    <p>In above example when condition satisfy at that time that hide element from the DOM. </p>
+
+    <strong>ngNonBindable Directive</strong>: When ever we use
+    <strong>this directive it tells Angular not to bind or not to compile</strong>.
+    <br> Syntax: <code ngNonBindable>&lt;h2 ngNonBindable&gt;{{name}}&lt;/h2&gt;</code>
+    <br> Example:
+    <p></p>
+    <pre><code ngNonBindable>&lt;div&gt; Name Person : &lt;span&gt;{{name}}&lt;/span&gt;&lt;/div&gt;</code></pre>
+    <p>when ever above code run it find the name variable in the class and display its binding value of the person. but if we
+        just want to display above sentence as angular syntax then we need to us "ngNonBindable" direactive in span so it
+        will display "&#123;&#123;name}}"</p>
+    <pre><code ngNonBindable>&lt;div&gt; Name Person : &lt;span ngNonBindable&gt;{{name}}&lt;/span&gt;&lt;/div&gt;</code></pre>
+
+    <strong>[innerHTML] Directive:</strong>&nbsp;when we have to display HTML display from the Angular at that time we have use this directive.<br>
+    Normally we uses&nbsp;<code>{{property}}</code>&nbsp;for interpolation of values.&nbsp;&nbsp;That is the way that you would display plain text in your element.<br>
+    Example:<p></p>
+<pre><code>export class HtmlComponent &#123;
+    displayStr: string = '&lt;strong&gt;Good Manners&lt;/strong&gt; Helpful Our Betterment';
+}</code></pre>
+    <pre><code ngNonBindable>&lt;div&gt;{{displayStr}}&lt;/div&gt;</code></pre>
+    <p>It display on the html sting as output</p>
+    <pre><code ngNonBindable>&lt;div [innerHTML]="displayStr"&gt;&lt;/div&gt;</code></pre>
+</article>
+<!-- END : Angular 4+ Tip -->
+
+<!-- START : Angular 4+ Tip -->
+<article class="uk-article">
+
+    <h2 class="uk-text-lead">How to import .JSON file in Angular and Typescript</h2>
+
+    <pre><code ngNonBindable>
+// How to import .JSON file in Angular and Typescript
+// Method 1 : Using import ( Using Wildcard Module Name )
+// Source : https://hackernoon.com/import-json-into-typescript-8d465beded79
+// 1. First Add following in typings.d.ts
+declare module "*.json" &#123;
+    const value: any;
+    export default value;
+}
+
+//2. Then, your code will work like charm!
+
+// Typescript
+// app.ts
+import * as data from './example.json';
+const word = (&lt;any>data).name;
+console.log(word); // output 'testing'
+
+// example.json
+&#123;
+    "name": "testing"
+}
+    </code></pre>
+</article>
+<!-- END : Angular 4+ Tip -->
+
+<!--
+
+==========================================
+Could not find a declaration file for module 'lodash'. 'c:/jr/__UPointNext/NextGen-v3/ui-core-widget/node_modules/lodash/lodash.js' implicitly has an 'any' type.
+  Try `npm install @types/lodash` if it exists or add a new declaration (.d.ts) file containing `declare module 'lodash';`
+==========================================
+
+On refresh or when you navigate away from the current page, then ngOnDestroy won't be called. The application will just be destroyed by the browser.
+
+Only when Angular2 removes the component from the DOM because you move away or you call destroy() on a dynamically created component, then ngOnDestroy() is called.
+
+You can listen to beforeunload and unload yourself if you need some action to happen before the application is destroyed by the browser.
+
+See also
+
+https://developer.mozilla.org/en-US/docs/Web/Events/unload
+How can we detect when user closes browser? (Angular)
+
+==========================================
+@HostListener('window:unload', [ '$event' ])
+  unloadHandler(event) {
+    // ...
+  }
+
+  @HostListener('window:beforeunload', [ '$event' ])
+  beforeUnloadHander(event) {
+    // ...
+  }
+
+==========================================
+// Import all
+
+import Rx from "rxjs/Rx";
+
+Rx.Observable
+  .interval(200)
+  .take(9)
+  .map(x => x + "!!!")
+  .bufferCount(2)
+  .subscribe(::console.log);
+
+
+
+
+
+// Add operators (my favourite)
+
+import {Observable} from "rxjs/Observable";
+import "rxjs/add/observable/interval";
+import "rxjs/add/operator/take";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/bufferCount"
+
+Observable
+  .interval(200)
+  .take(9)
+  .map(x => x + "!!!")
+  .bufferCount(2)
+  .subscribe(::console.log);
+
+
+
+
+
+// JavaScript ES7 Function Bind Syntax
+
+import {Observable} from "rxjs/Observable";
+import "rxjs/add/observable/interval";
+import {take} from "rxjs/operator/take";
+import {map} from "rxjs/operator/map";
+import {bufferCount} from "rxjs/operator/bufferCount"
+
+Observable
+  .interval(200)
+  ::take(9)
+  ::map(x => x + "!!!")
+  ::bufferCount(2)
+  .subscribe(::console.log);
+
+  ==========================================
+  https://stackoverflow.com/questions/45898948/angular-4-ngondestroy-in-service-destroy-observable/45898988
+  Here's an example:
+
+@Injectable()
+class Service implements OnDestroy {
+  ngOnDestroy() {
+    console.log('Service destroy')
+  }
+}
+
+@Component({
+  selector: 'foo',
+  template: `foo`,
+  providers: [Service]
+})
+export class Foo {
+  constructor(service: Service) {}
+
+  ngOnDestroy() {
+    console.log('foo destroy')
+  }
+}
+
+@Component({
+  selector: 'my-app',
+  template: `<foo *ngIf="isFoo"></foo>`,
+})
+export class App {
+  isFoo = true;
+
+  constructor() {
+    setTimeout(() => {
+        this.isFoo = false;
+    }, 1000)
+  }
+}
+==========================================
+https://stackoverflow.com/questions/39011677/memory-leaks-in-angular2
+
+In the browser, Angular is just JavaScript, so the typical caveats apply.
+
+One thing that Angular specifically warns against though is Observables. Once you subscribe to one, it will keep working until you unsubscribe, even if you navigate to another view. Angular unusbscribes for you where possible (eg if you use the async pipe in the template:
+
+model
+
+//listenToServer returns an observable that keeps emitting updates
+serverMsgs = httpService.listenToServer();
+
+template
+
+<div>{{serverMsgs | async}}</div>
+
+Angular will show server messages in the div, but end the subscription when you navigate away.
+
+However, if you subscribe yourself, you have to also unsubscribe:
+
+model
+
+msgs$ = httpService.listenToServer().subscribe(
+    msg => {this.serverMsgs.push(msg); console.log(msg)}
+);
+
+template
+
+<div *ngFor="let msg of serverMsgs">{{msg}}</div>
+
+When you navigate away, even though you cannot see new messages appear in the view, you will see them printed to the console as they arrive. To unsubscribe when the component is disposed of, you would do:
+
+ngOnDestroy(){ this.msgs$.unsubscribe(); }
+
+From the docs:
+
+    we must unsubscribe before Angular destroys the component. Failure to do so could create a memory leak.
+
+========================================== TUTORIALS ==========================================
+https://www.dwmkerr.com/fixing-memory-leaks-in-angularjs-applications/
+https://auth0.com/blog/four-types-of-leaks-in-your-javascript-code-and-how-to-get-rid-of-them/
+
+==========================================
+https://github.com/primefaces/primeng/blob/61b8aaa82bbe875b881da9c926c95f2a4ac30bbd/src/app/showcase/components/terminal/terminaldemo.ts
+
+import {Component,OnDestroy} from '@angular/core';
+import {TerminalService} from '../../../components/terminal/terminalservice';
+import {Subscription}   from 'rxjs/Subscription';
+
+@Component({
+    templateUrl: './terminaldemo.html',
+    providers: [TerminalService]
+})
+export class TerminalDemo implements OnDestroy {
+
+    subscription: Subscription;
+
+    constructor(private terminalService: TerminalService) {
+        this.subscription = this.terminalService.commandHandler.subscribe(command => {
+            let response = (command === 'date') ? new Date().toDateString() : 'Unknown command: ' + command;
+            this.terminalService.sendResponse(response);
+        });
+    }
+
+    ngOnDestroy() {
+        if(this.subscription) {
+            this.subscription.unsubscribe();
+        }
+    }
+}
+==========================================
+declare global {
+    interface Window { MyNamespace: any; }
+}
+
+window.MyNamespace = window.MyNamespace || {};
+
+========================================== Index.html
+        function destroyApp() {
+            console.log('destroyApp :', window.debugStuff.app);
+            window.debugStuff.app.destroy();
+            window.debugStuff.platform.destroy();
+            delete window.debugStuff;
+
+            logInfo();
+        }
+
+        function logInfo() {
+            console.log('getAllAngularRootElements', getAllAngularRootElements());
+            console.log('getAngularTestability', getAngularTestability(getAllAngularRootElements()[0]));
+        }
+
+        window.addEventListener("beforeunload", destroyApp);
+
+		Main.ts ==========================================
+		declare global {
+  interface Window { debugStuff: any; }
+}
+
+function _window() {
+  return window;
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule).then((ref) => {
+  console.log("storing stuff for destroying later");
+  window.debugStuff =  {
+    app: ref,
+    platform: platformBrowserDynamic()
+  }
+
+});
+
+==========================================
+@HostListener('window:unload', ['$event'])
+    unloadHandler(event) {
+        console.log('window:unload Fired...');
+    }
+
+    @HostListener('window:beforeunload', ['$event'])
+    beforeUnloadHander(event) {
+        console.log('window:beforeunload Fired...');
+    }
+
+==========================================
+export default {
+  resolve: {
+    alias: {
+      'angular': path.resolve(path.join(__dirname, 'node_modules', 'angular'))
+     },
+     //...
+  },
+  // ...
+}
+
+==========================================
+var $timer = $('#timer'),
+    count = 0;
+
+//set the interval
+var interval = setInterval(function() {
+    $timer.html(count++);
+}, 1000);
+console.log('the interval is: '+interval);
+
+//clear it
+$('button').bind('click', function(e) {
+    var found;
+    for(i=0; i<10000; i++)
+    {
+        window.clearInterval(i);
+    }
+});
+
+==========================================
+
+platformBrowserDynamic().bootstrapModule(AppModule, {ngZone: 'noop'}).then(ref => {
+  // Ensure Angular destroys itself on hot reloads.
+  if (window['ngRef']) {
+    window['ngRef'].destroy();
+  }
+  window['ngRef'] = ref;
+
+  // Otherise, log the boot error
+}).catch(err => console.error(err));
+
+==========================================
+//platformBrowserDynamic().bootstrapModule(AppModule);
+const moduleRef = platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {
+  console.log('Bootstraping Styleguide..', ref);
+  // Ensure Angular destroys itself on hot reloads.
+  if (window['ngRef']) {
+    window['ngRef'].destroy();
+    window['ngRef'] = null;
+  }
+  window['ngRef'] = ref;
+
+  // Otherise, log the boot error
+}).catch(err => console.error(err));
+
+console.log('moduleRef :',moduleRef)
+,
+    changeDetection: ChangeDetectionStrategy.OnPush
+==========================================
+<ul>
+  <li *ngFor="let song of songs; trackBy: trackSongByFn">{{song.name}}</li>
+</ul>
+
+trackByFn(index, song) {
+    return index; // or song.id
+}
+
+
+-->
